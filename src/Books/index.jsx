@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchBooks } from './bookAction';
 
 export default function Books() {
-  const reduxBook = useSelector((state) => state.reduxBook);
+  const reduxBook = useSelector(state => state.reduxBook);
   const dispatch = useDispatch();
 
   const handleFetchBooks = () => {
