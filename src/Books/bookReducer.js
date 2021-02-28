@@ -1,9 +1,9 @@
-import { FETCH_BOOKS_DONE } from "./bookAction";
+import { BOOK_RECIEVED } from "./bookAction";
 
 export const bookState = []
 
 export const bookReducer = (state = bookState, action) => {
-  if (action.type === FETCH_BOOKS_DONE) {
+  if (action.type === BOOK_RECIEVED) {
     return action.books;
   }
 

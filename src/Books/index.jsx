@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBooks } from './bookAction';
 
 export default function Books() {
-  const reduxBook = useSelector(state => state.reduxBook);
+  const reduxBook = useSelector((state) => state.reduxBook);
   const dispatch = useDispatch();
-  useEffect(() => {
+
+  const handleFetchBooks = () => {
     dispatch(fetchBooks());
-  }, []);
+  };
 
   return (
     <>
+      <button onClick={handleFetchBooks}>Fethc Books</button>
       {reduxBook.map((book, index) => (
         <div key={index}>
           <h6>{book.title}</h6>
