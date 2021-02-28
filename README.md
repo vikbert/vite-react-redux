@@ -1,6 +1,6 @@
 <div align="center">
   <h3>A react-redux starter with vite</h3>
-  <img src="./docs/redux.jpg" width=180/>
+  <img src="./docs/redux.jpg" width=250/>
 
   <p>
     <a href="#">
