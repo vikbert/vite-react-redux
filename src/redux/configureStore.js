@@ -1,6 +1,9 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import rootReducer, { rootState } from './storeReducer';
-import thunk from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga';
+import bookSaga from '../Books/bookSage';
+
+const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore() {
   let composerEnhancers = () => {};
@@ -8,5 +11,13 @@ export default function configureStore() {
     composerEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   }
 
-  return createStore(rootReducer, rootState, composerEnhancers(applyMiddleware(thunk)));
+  const store = createStore(
+    rootReducer,
+    rootState,
+    composerEnhancers(applyMiddleware(sagaMiddleware)),
+  );
+
+  sagaMiddleware.run(bookSaga);
+
+  return store;
 }

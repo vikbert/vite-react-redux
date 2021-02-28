@@ -1,18 +1,13 @@
-export const FETCH_BOOKS_DONE = 'book.FETCH_BOOKS_DONE';
+export const BOOKS_RECIEVED = 'book.BOOKS_RECIEVED';
+export const FETCH_BOOKS = 'book.FETCH_BOOKS';
 
 export const fetchBooksDone = (books) => {
   return {
-    type: FETCH_BOOKS_DONE,
+    type: BOOKS_RECIEVED,
     books,
   };
 };
 
-export const fetchBooks = () => {
-  return function (dispatch) {
-    return fetch('https://my-json-server.typicode.com/vikbert/jsonfaker/books')
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(fetchBooksDone(data));
-      });
-  };
-};
+export const fetchBooks = () => ({
+  type: FETCH_BOOKS,
+});
